@@ -51,10 +51,11 @@ middleImg.setAttribute('src', siteContent["main-content"]["middle-img-src"]);
 
 // Update navigation menu items using forEach() method
 
-let navigation = document.querySelectorAll("nav a");
+let navigationItems = document.querySelectorAll("nav a");
 
-navigation.forEach((item, i) => {
+navigationItems.forEach((item, i) => {
   item.textContent = siteContent["nav"][`nav-item-${i + 1}`];
+  item.style.color = "green";
 });
 
 // Update main heading and cta button
@@ -97,6 +98,28 @@ let footer = document.querySelector("footer p");
 footer.textContent = siteContent["footer"]["copyright"];
 
  
+// Add new content
 
+let firstItem = document.createElement("a");
+firstItem.textContent = "First Item";
+firstItem.style.color = "green";
+
+let lastItem = document.createElement("a");
+lastItem.textContent = "Last Item";
+lastItem.style.color = "green";
+
+let navigation = document.querySelector("nav");
+navigation.appendChild(lastItem);
+navigation.prepend(firstItem);
+
+//  Add event to cta button
+
+ctaButton.addEventListener('click', () => {
+  let rgb = `rgb(${Math.random() * 256}, ${Math.random() * 256}, ${Math.random() * 256})`;
+  let newNavItems = document.querySelectorAll("nav a");
+  newNavItems.forEach((item) => {
+    item.style.color = rgb;
+  })
+});
 
 
