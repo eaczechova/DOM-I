@@ -70,34 +70,64 @@ ctaButton.textContent = siteContent["cta"]["button"];
 
 let mainContentHeadings = document.querySelectorAll('.text-content h4');
 
-mainContentHeadings[0].textContent = siteContent["main-content"]["features-h4"];
-mainContentHeadings[1].textContent = siteContent["main-content"]["about-h4"];
-mainContentHeadings[2].textContent = siteContent["main-content"]["services-h4"];
-mainContentHeadings[3].textContent = siteContent["main-content"]["product-h4"];
-mainContentHeadings[4].textContent = siteContent["main-content"]["vision-h4"];
+// mainContentHeadings[0].textContent = siteContent["main-content"]["features-h4"];
+// mainContentHeadings[1].textContent = siteContent["main-content"]["about-h4"];
+// mainContentHeadings[2].textContent = siteContent["main-content"]["services-h4"];
+// mainContentHeadings[3].textContent = siteContent["main-content"]["product-h4"];
+// mainContentHeadings[4].textContent = siteContent["main-content"]["vision-h4"];
+
+// Code refactored
+
+const headingData = Object.entries(siteContent["main-content"])
+.filter(item => item[0].includes("h4"))
+.map(item => item[1]);
+
+mainContentHeadings.forEach((item, i) => {
+  item.textContent = headingData[i];
+});
+
 
 let mainContentText = document.querySelectorAll('.text-content p');
-mainContentText[0].textContent = siteContent["main-content"]["features-content"];
-mainContentText[1].textContent = siteContent["main-content"]["about-content"];
-mainContentText[2].textContent = siteContent["main-content"]["services-content"];
-mainContentText[3].textContent = siteContent["main-content"]["product-content"];
-mainContentText[4].textContent = siteContent["main-content"]["vision-content"];
+
+// mainContentText[0].textContent = siteContent["main-content"]["features-content"];
+// mainContentText[1].textContent = siteContent["main-content"]["about-content"];
+// mainContentText[2].textContent = siteContent["main-content"]["services-content"];
+// mainContentText[3].textContent = siteContent["main-content"]["product-content"];
+// mainContentText[4].textContent = siteContent["main-content"]["vision-content"];
+
+const textData = Object.entries(siteContent["main-content"])
+  .filter(item => item[0].includes("content"))
+  .map(item => item[1]);
+
+mainContentText.forEach((item, i) => {
+  item.textContent = textData[i];
+});
+
 
 // Update contact information and footer note
 
-let contactHeading = document.querySelector(".contact h4");
-let contactParagraphs = document.querySelectorAll(".contact p");
+// let contactHeading = document.querySelector(".contact h4");
+// let contactParagraphs = document.querySelectorAll(".contact p");
 
-contactHeading.textContent = siteContent["contact"]["contact-h4"];
+// contactHeading.textContent = siteContent["contact"]["contact-h4"];
 
-contactParagraphs[0].textContent = siteContent["contact"]["address"];
-contactParagraphs[1].textContent = siteContent["contact"]["phone"];
-contactParagraphs[2].textContent = siteContent["contact"]["email"];
+// contactParagraphs[0].textContent = siteContent["contact"]["address"];
+// contactParagraphs[1].textContent = siteContent["contact"]["phone"];
+// contactParagraphs[2].textContent = siteContent["contact"]["email"];
+
+
+// Code refactored 
+
+let contact = document.querySelectorAll(".contact *");
+let contactData = Object.entries(siteContent["contact"]).map(item => item[1]);
+
+contact.forEach((item, i) => {
+  item.textContent = contactData[i];
+});
 
 let footer = document.querySelector("footer p");
 footer.textContent = siteContent["footer"]["copyright"];
 
- 
 // Add new content
 
 let firstItem = document.createElement("a");
