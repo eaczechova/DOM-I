@@ -86,7 +86,6 @@ mainContentHeadings.forEach((item, i) => {
   item.textContent = headingData[i];
 });
 
-
 let mainContentText = document.querySelectorAll('.text-content p');
 
 // mainContentText[0].textContent = siteContent["main-content"]["features-content"];
